@@ -21,20 +21,20 @@ public class FlightBookingTest extends MakeMyTripBase {
 		flight = new FlightBooking();
 	}
 	
-	@Test
+	@Test()
 	public void searchFlightsTest() throws InterruptedException {
 		flight.selectTripType();
 		flight.searchFlight("BLR", "DEL");
 		
 	}
 	
-	@Test
+	@Test(dependsOnMethods="searchFlightsTest")
 	public void selectFlightTest() throws InterruptedException {
 		flight.selectLowCostFilght();
 	}
 	
 	
-	@Test
+	@Test(dependsOnMethods="selectFlightTest")
 	public void fillPassengerInfoTest() throws InterruptedException {
 		flight.fillPassengerInfo();
 	}
@@ -42,6 +42,7 @@ public class FlightBookingTest extends MakeMyTripBase {
 	@AfterClass
 	public void tearDown() {
 		System.out.println("Completed...");
+		driver.quit();
 	}
 	
 	

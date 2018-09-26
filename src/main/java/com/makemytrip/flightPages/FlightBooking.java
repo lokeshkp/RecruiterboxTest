@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +40,7 @@ public class FlightBooking extends MakeMyTripBase{
 	@FindBy(xpath ="//span//input[@placeholder='Last Name']") WebElement lastName;
 	@FindBy(xpath ="//input[@placeholder='Mobile Number']") WebElement mobile;
 	@FindBy(xpath ="//a[text()='Continue']") WebElement continueButton;
+	
 	
 	
 	
@@ -86,7 +88,11 @@ public class FlightBooking extends MakeMyTripBase{
 	}
 
 	public void fillPassengerInfo() throws InterruptedException {
+		 
+		JavascriptExecutor js = (JavascriptExecutor) driver; 		
+		js.executeScript("arguments[0].scrollIntoView(true);",email);		
 		email.sendKeys("kplokesh@abc.com");	
+		Thread.sleep(5000);
 		continueAsGuest.click();	
 		firstName.sendKeys("Lokesh");	
 		lastName.sendKeys("Kondepudi");	
