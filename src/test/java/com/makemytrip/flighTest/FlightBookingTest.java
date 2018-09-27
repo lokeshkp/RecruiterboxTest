@@ -36,12 +36,17 @@ public class FlightBookingTest extends MakeMyTripBase {
 	
 	@Test(dependsOnMethods="selectFlightTest")
 	public void fillPassengerInfoTest() throws InterruptedException {
-		flight.fillPassengerInfo();
+		flight.fillPassengerInfo();		
+	}
+	
+	@Test(dependsOnMethods="fillPassengerInfoTest")
+	public void bookingSummaryTest() throws InterruptedException {
+		flight.bookingSummaryTest();
 	}
 	
 	@AfterClass
 	public void tearDown() {
-		System.out.println("Completed...");
+		System.out.println("Hurry We are in Booking Page...");
 		driver.quit();
 	}
 	

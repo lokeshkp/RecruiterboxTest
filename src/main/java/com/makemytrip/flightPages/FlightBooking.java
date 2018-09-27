@@ -1,17 +1,14 @@
 package com.makemytrip.flightPages;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.makemytrip.flightBase.MakeMyTripBase;
 import com.makemytrip.utils.MakeMyTripUtils;
@@ -92,14 +89,24 @@ public class FlightBooking extends MakeMyTripBase{
 		JavascriptExecutor js = (JavascriptExecutor) driver; 		
 		js.executeScript("arguments[0].scrollIntoView(true);",email);		
 		email.sendKeys("kplokesh@abc.com");	
-		Thread.sleep(5000);
+		Thread.sleep(15000);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(continueAsGuest));		
 		continueAsGuest.click();	
 		firstName.sendKeys("Lokesh");	
 		lastName.sendKeys("Kondepudi");	
-		mobile.sendKeys("9900343344");	
+		mobile.sendKeys("9900465757");	
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.elementToBeClickable(continueButton));		
 		continueButton.click();
 		Thread.sleep(2000);
-		continueButton.click();
+		continueButton.click();		
+	}
+	
+	public void bookingSummaryTest() throws InterruptedException {
+		Thread.sleep(2000);
+		String pageTitle = driver.getTitle();		
+		Assert.assertEquals(pageTitle, "MakeMytrip Payment : Safe and Secure");
 	}
 	
 }
