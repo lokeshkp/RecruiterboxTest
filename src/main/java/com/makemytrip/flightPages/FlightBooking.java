@@ -106,8 +106,9 @@ public class FlightBooking extends MakeMyTripBase{
 	}
 	
 	public void bookingSummaryTest() throws InterruptedException {
+		Thread.sleep(4000);
+		String pageTitle = driver.getTitle();
 		Thread.sleep(2000);
-		String pageTitle = driver.getTitle();		
 		Assert.assertEquals(pageTitle, "MakeMytrip Payment : Safe and Secure");
 	}
 	
