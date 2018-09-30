@@ -76,6 +76,7 @@ public class MakeMyTripUtils extends MakeMyTripBase{
 			for (int i = 0; i < lstDate.size(); i++) {
 				if (lstDate.get(i).getText().trim().equalsIgnoreCase("1")) {
 					lstDate.get(i).click();
+					break;
 				}
 			}
 		}
