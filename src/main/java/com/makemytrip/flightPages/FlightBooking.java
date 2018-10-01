@@ -37,6 +37,7 @@ public class FlightBooking extends MakeMyTripBase{
 	@FindBy(xpath ="//span//input[@placeholder='Last Name']") WebElement lastName;
 	@FindBy(xpath ="//input[@placeholder='Mobile Number']") WebElement mobile;
 	@FindBy(xpath ="//a[text()='Continue']") WebElement continueButton;
+	@FindBy(xpath ="//a[text()='Skip add-ons']") WebElement skipAddOns;
 	@FindBy(xpath ="//a[text()='MALE']") WebElement gender;
 	
 	
@@ -102,6 +103,11 @@ public class FlightBooking extends MakeMyTripBase{
 		wait.until(ExpectedConditions.elementToBeClickable(continueButton));		
 		continueButton.click();
 		Thread.sleep(2000);
+		try {
+			skipAddOns.click();
+		}catch(Exception e) {
+			e.getMessage();
+		}
 		continueButton.click();		
 	}
 	
