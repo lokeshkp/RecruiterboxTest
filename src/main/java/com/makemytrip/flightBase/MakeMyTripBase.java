@@ -36,17 +36,19 @@ public class MakeMyTripBase {
 	
 	public static void browserInitilization() {
 		
-		/*String browserName = prop.getProperty("browser");		
+		String browserName = prop.getProperty("browser");		
 		if(browserName.equals("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "/Users/lokes/eclipse-workspace/RecruiterboxTestLOK/src/main/java/browsers/chromedriver.exe");
 			driver = new ChromeDriver();
 		}else if(browserName.equals("firefox")) {
 			System.setProperty("webdriver.gecko.driver", "/Users/lokes/eclipse-workspace/RecruiterboxTestLOK/src/main/java/browsers/geckodriver");
 			driver = new FirefoxDriver();
-		}*/
+		}else if(browserName.equals("safari")) {
+			driver = new SafariDriver();
+		}
 		
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		//WebDriverManager.chromedriver().setup();
+		//driver = new ChromeDriver();
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
