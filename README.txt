@@ -15,6 +15,8 @@ To run selenium scripts on mac os please follow the bellow instructions,
 5. Restart your Browser – and excute it
 
 Note : Make sure that you have “Enable WebDriver“ check-box enabled.
+Note : I have configured browser safari in the following properties file (i.e /RecruiterboxTestLOK/src/main/java/com/makemytrip/config/config.properties)
+so if you would like run selenium scripts on chrome/firefox please change here.
 
 Instructions to run this assignment
 ---------------------------------------------
