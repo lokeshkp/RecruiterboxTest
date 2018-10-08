@@ -6,7 +6,16 @@ In order to complete this assignment I have used the following Softwares,
 4.  TestNG
 5.  Eclipse IDE
 
-To run selenium scripts on mac os please follow the bellow instructions,
+Instructions to run this assignment
+---------------------------------------------
+1. Clone project from github 
+  i.e git clone https://github.com/lokeshkp/RecruiterboxTest.git,
+2. Open command prompt and navigate to project location,
+3. type "mvn test site"
+
+Note: I have placed chromedriver & gekodriver in repositary (/src/main/java/browsers) it self hence no need to download,
+
+To run selenium scripts on safari & mac os please follow the bellow instructions,
 ------------------------------------------------------------------------
 1. Hope JDK already installed & configured in your mac book if not plz install and configure,
 2. Download the Safari Browser Extension and  Install the Safari Browser Extension,
@@ -17,9 +26,3 @@ To run selenium scripts on mac os please follow the bellow instructions,
 Note : Make sure that you have “Enable WebDriver“ check-box enabled.
 Note : I have configured browser safari in the following properties file (i.e /RecruiterboxTestLOK/src/main/java/com/makemytrip/config/config.properties)
 so if you would like run selenium scripts on chrome/firefox please change here.
-
-Instructions to run this assignment
----------------------------------------------
-1. Clone project from github (https://github.com/lokeshkp/RecruiterboxTest.git),
-2. Open command prompt and navigate to project location,
-3. type "mvn test site"
