@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,6 +18,7 @@ public class MakeMyTripBase {
 	
 	public static WebDriver driver;
 	public static Properties prop;
+	private static String cwd;
 	
 	public MakeMyTripBase() {
 		try {
