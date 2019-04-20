@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -52,8 +53,9 @@ public class MakeMyTripBase {
 		}else if(browserName.equals("firefox")) {
 			System.setProperty("webdriver.gecko.driver", cwd+"\\src\\main\\java\\browsers\\geckodriver.exe");
 			driver = new FirefoxDriver();
-		}else if(browserName.equals("safari")) {
-			driver = new SafariDriver();
+		}else if(browserName.equals("ie")) {
+			System.setProperty("webdriver.ie.driver", cwd+"\\src\\main\\java\\browsers\\IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
 		}
 		
 		//WebDriverManager.chromedriver().setup();
