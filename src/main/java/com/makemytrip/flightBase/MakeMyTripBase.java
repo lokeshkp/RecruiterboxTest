@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -23,7 +24,7 @@ public class MakeMyTripBase {
 	public MakeMyTripBase() {
 		try {
 			
-			String cwd = System.getProperty("user.dir");
+			cwd = System.getProperty("user.dir");
 			String profFile = cwd + "\\src\\main\\java\\com\\makemytrip\\config\\config.properties"; 
 			System.out.println(profFile);
 			prop = new Properties();
@@ -42,6 +43,11 @@ public class MakeMyTripBase {
 		String browserName = prop.getProperty("browser");	
 		cwd = System.getProperty("user.dir");
 		if(browserName.equals("chrome")) {
+			
+			 ChromeOptions options = new ChromeOptions();
+			 options.addArguments("--disable-features=VizDisplayCompositor");
+			 driver = new ChromeDriver(options);
+			
 			System.setProperty("webdriver.chrome.driver", cwd+"\\src\\main\\java\\browsers\\chromedriver.exe");
 			driver = new ChromeDriver();
 		}else if(browserName.equals("firefox")) {
