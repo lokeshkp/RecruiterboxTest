@@ -26,7 +26,7 @@ public class MakeMyTripBase {
 		try {
 			
 			cwd = System.getProperty("user.dir");
-			String profFile = cwd + "\\src\\main\\java\\com\\makemytrip\\config\\config.properties"; 
+			String profFile = cwd + "/src/main/java/com/makemytrip/config/config.properties"; 
 			System.out.println(profFile);
 			prop = new Properties();
 			FileInputStream fis = new FileInputStream(profFile);
