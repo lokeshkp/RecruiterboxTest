@@ -46,10 +46,9 @@ public class MakeMyTripBase {
 			
 			 ChromeOptions options = new ChromeOptions();
 			 options.addArguments("--disable-features=VizDisplayCompositor");
-			 driver = new ChromeDriver(options);
 			
 			System.setProperty("webdriver.chrome.driver", cwd+"\\src\\main\\java\\browsers\\chromedriver.exe");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}else if(browserName.equals("firefox")) {
 			System.setProperty("webdriver.gecko.driver", cwd+"\\src\\main\\java\\browsers\\geckodriver.exe");
 			driver = new FirefoxDriver();
