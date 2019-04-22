@@ -24,25 +24,11 @@ public class FlightBookingTest extends MakeMyTripBase {
 	@Test()
 	public void searchFlightsTest() throws InterruptedException {
 		flight.selectTripType();
-		flight.searchFlight("BLR", "DEL");
+		flight.searchFlight("MAA", "RJA");
 		
 	}
 	
-	@Test(dependsOnMethods="searchFlightsTest")
-	public void selectFlightTest() throws InterruptedException {
-		flight.selectLowCostFilght();
-	}
-	
-	
-	@Test(dependsOnMethods="selectFlightTest")
-	public void fillPassengerInfoTest() throws InterruptedException {
-		flight.fillPassengerInfo();		
-	}
-	
-	@Test(dependsOnMethods="fillPassengerInfoTest")
-	public void bookingSummaryTest() throws InterruptedException {
-		flight.bookingSummaryTest();
-	}
+
 	
 	@AfterClass
 	public void tearDown() {

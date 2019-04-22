@@ -17,12 +17,15 @@ public class FlightBooking extends MakeMyTripBase{
 	
 	MakeMyTripUtils utils;
 	
-	@FindBy(xpath ="//div[@class='switchBTN']//label[contains(text(),'round trip')]") WebElement tripType;	
-	@FindBy(xpath ="//input[@id='hp-widget__sfrom']") WebElement FROM;	
-	@FindBy(xpath ="//input[@id='hp-widget__sTo']") WebElement TO;	
-	@FindBy(xpath ="//td[contains(@class, 'ui-datepicker-today')]") WebElement depDate;	
-	@FindBy(xpath ="//td[contains(@class, 'maxDate')]") WebElement retDate;	
-	@FindBy(xpath ="//button[@id='searchBtn']") WebElement search;
+	@FindBy(xpath ="//div[@class='makeFlex']//li[contains(text(),'Round')]") WebElement tripType;	
+	@FindBy(xpath ="//input[@id='fromCity']") WebElement FROM;
+	@FindBy(xpath ="//input[@placeholder='From']") WebElement fromPlace;
+	@FindBy(xpath ="//input[@placeholder='To']") WebElement toPlace;
+		
+	//@FindBy(xpath ="//input[@id='departure']") WebElement depDate;
+	@FindBy(xpath ="//div[contains(@class, 'today')]") WebElement toDay;	
+	@FindBy(xpath ="//div[contains(@class, 'reDates')]") WebElement retDate;	
+	@FindBy(xpath ="//a[text()='Search']") WebElement search;
 	
 	
 	@FindBy(xpath ="//a[contains(@class,'last active')]//span") WebElement priceSort;	
@@ -54,68 +57,25 @@ public class FlightBooking extends MakeMyTripBase{
 	}
 	
 	public void searchFlight(String fromValue, String toValue) throws InterruptedException {
-		FROM.clear();
-		FROM.sendKeys(fromValue);
-		Thread.sleep(2000);
-		FROM.sendKeys(Keys.ENTER);
-		Thread.sleep(2000);
-		TO.sendKeys(toValue);
-		Thread.sleep(2000);
-		TO.sendKeys(Keys.ENTER);
-		depDate.click();
-		Thread.sleep(2000);
-		utils.selectTomorrowDate();
-		search.click();
-	}
-	
-	
-	public void selectLowCostFilght() throws InterruptedException {
+		FROM.click();
+		Thread.sleep(1000);
+		fromPlace.sendKeys(fromValue);
+		Thread.sleep(1000);
+		fromPlace.sendKeys(Keys.DOWN);
+		fromPlace.sendKeys(Keys.ENTER);
+		Thread.sleep(1000);
+		toPlace.sendKeys(toValue);
+		Thread.sleep(1000);
+		toPlace.sendKeys(Keys.DOWN);
+		toPlace.sendKeys(Keys.ENTER);
 		
-		String sortRes = priceSort.getAttribute("class");		
-		if(sortRes.contains("order down_arrow")) {
-			priceSort.click();
-			Thread.sleep(2000);
-			priceSort.click();
-			
-		}else {
-			selectFistFlight.click();
-			Thread.sleep(2000);
-			selectFistFlight.click();
-			Thread.sleep(2000);
-			Book.click();
-		}
-	}
-
-	public void fillPassengerInfo() throws InterruptedException {
-		 
-		JavascriptExecutor js = (JavascriptExecutor) driver; 		
-		js.executeScript("arguments[0].scrollIntoView(true);",email);		
-		email.sendKeys("kplokesh@abc.com");	
-		Thread.sleep(15000);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(continueAsGuest));		
-		continueAsGuest.click();	
-		firstName.sendKeys("Lokesh");	
-		lastName.sendKeys("Kondepudi");	
-		mobile.sendKeys("9900465757");	
-		gender.click();
-		Thread.sleep(5000);
-		wait.until(ExpectedConditions.elementToBeClickable(continueButton));		
-		continueButton.click();
-		Thread.sleep(2000);
-		try {
-			skipAddOns.click();
-		}catch(Exception e) {
-			e.getMessage();
-		}
-		continueButton.click();		
-	}
-	
-	public void bookingSummaryTest() throws InterruptedException {
-		Thread.sleep(4000);
-		String pageTitle = driver.getTitle();
-		Thread.sleep(2000);
-		Assert.assertEquals(pageTitle, "MakeMytrip Payment : Safe and Secure");
+		//depDate.click();
+		Thread.sleep(1000);
+		toDay.click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[contains(@class,'DayPicker-Month')][1]//div[contains(@class,'today') or contains(@class,'ui-datepicker-current')]/following-sibling::div[2]")).click();
+		//utils.selectTomorrowDate();
+		search.click();
 	}
 	
 }

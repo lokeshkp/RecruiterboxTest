@@ -18,7 +18,7 @@ public class MakeMyTripUtils extends MakeMyTripBase{
 	}
 	
 	public void selectTomorrowDate() throws InterruptedException {
-		driver.findElement(By.id("hp-widget__return")).click();
+		//driver.findElement(By.id("hp-widget__return")).click();
 		 
 		Date date = new Date();
 		Calendar c = Calendar.getInstance();
@@ -33,15 +33,18 @@ public class MakeMyTripUtils extends MakeMyTripBase{
 		//System.out.println(tommorowsDate);
  
 		Thread.sleep(2000);
+		
+		//("(//tr[@class='greyBg'])[1]")
  
-		String strUIMonth = driver.findElements(By.xpath("//div[contains(@class,'dateFilter')][2]/div[contains(@class,'ui-datepicker-multi')]//span[contains(@class,'month')]")).get(0).getText();
+		String strUIMonth = driver.findElements(By.xpath("(//div[contains(@class,'DayPicker-Month')][1]/div)[0]")).get(0).getText();
  
+		System.err.println(strUIMonth);
 		if (strMonth.equalsIgnoreCase(strUIMonth)) {
  
 			/**
 			 * Used 'following-sibling' to click on tomorrow's day (Edge-Cases)
 			 */
-			if (driver.findElements(By.xpath("//div[contains(@class,'dateFilter')][2]//td[contains(@class,'ui-datepicker-today') or contains(@class,'ui-datepicker-current')]/following-sibling::td[1]/a")).size() != 0) {
+			if (driver.findElements(By.xpath("//div[contains(@class,'DayPicker-Month')][1]//div[contains(@class,'today') or contains(@class,'ui-datepicker-current')]/following-sibling::div[2]")).size() != 0) {
  
 				/**
 				 * Add this code to handle 'StaleElementReferenceException'
@@ -49,7 +52,7 @@ public class MakeMyTripUtils extends MakeMyTripBase{
 				boolean result = false;
 				do {
 					try {
-						driver.findElement(By.xpath("//div[contains(@class,'dateFilter')][2]//td[contains(@class,'ui-datepicker-today') or contains(@class,'ui-datepicker-current')]/following-sibling::td[1]/a")).click();
+						driver.findElement(By.xpath("//div[contains(@class,'DayPicker-Month')][1]//div[contains(@class,'today') or contains(@class,'ui-datepicker-current')]/following-sibling::div[2]")).click();
 					} catch (Exception e) {
 						result = true;
 					}
