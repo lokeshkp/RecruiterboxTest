@@ -44,14 +44,11 @@ public class MakeMyTripBase {
 		String browserName = prop.getProperty("browser");	
 		cwd = System.getProperty("user.dir");
 		if(browserName.equals("chrome")) {
-			
-			 //ChromeOptions options = new ChromeOptions();
-			 //options.addArguments("--disable-features=VizDisplayCompositor");
-			
+	
 			ChromeOptions chromeOptions = new ChromeOptions(); 
 			chromeOptions.addArguments("test-type"); 
 			chromeOptions.addArguments("no-sandbox"); 
-			
+			chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
 			
 			System.setProperty("webdriver.chrome.driver", cwd+"/src/main/java/browsers/chromedriver");
 			driver = new ChromeDriver(chromeOptions);
