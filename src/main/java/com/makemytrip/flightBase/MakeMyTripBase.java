@@ -48,8 +48,13 @@ public class MakeMyTripBase {
 			 //ChromeOptions options = new ChromeOptions();
 			 //options.addArguments("--disable-features=VizDisplayCompositor");
 			
+			ChromeOptions chromeOptions = new ChromeOptions(); 
+			chromeOptions.addArguments("test-type"); 
+			chromeOptions.addArguments("no-sandbox"); 
+			
+			
 			System.setProperty("webdriver.chrome.driver", cwd+"/src/main/java/browsers/chromedriver");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(chromeOptions);
 		}else if(browserName.equals("firefox")) {
 			System.setProperty("webdriver.gecko.driver", cwd+"/src/main/java/browsers/geckodriver.exe");
 			driver = new FirefoxDriver();
